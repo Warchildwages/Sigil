@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import type { SigningMethod } from '@signet/shared';
-import type { SmartAccount } from '@signet/blockchain/circle';
+import type { SigningMethod } from '@sigil/shared';
+import type { SmartAccount } from '@sigil/blockchain/circle';
 import { useSignetContext } from './SignetProvider.js';
 import { useSignetSession } from './hooks/useSignetSession.js';
 import { StepTracker } from './components/StepTracker.js';

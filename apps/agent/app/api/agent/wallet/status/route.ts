@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { jwtVerify } from 'jose';
-import type { AgentWalletIdentity } from '@signet/shared';
+import type { AgentWalletIdentity } from '@sigil/shared';
 
 /**
  * GET /api/agent/wallet/status

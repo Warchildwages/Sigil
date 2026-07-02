@@ -11,7 +11,7 @@
 // attestations), this gives the agent a verifiable three-part identity:
 //   wallet (payment) + ERC-8004 (identity) + EAS (proof of work)
 
-import type { AgentCapability, AgentIdentity, AgentMetadata } from '@signet/shared';
+import type { AgentCapability, AgentIdentity, AgentMetadata } from '@sigil/shared';
 import { encodeAbiParameters, keccak256, parseAbiParameters } from 'viem';
 
 /** ERC-8004 Agent Registry ABI — minimal interface for AgentRegistered event */

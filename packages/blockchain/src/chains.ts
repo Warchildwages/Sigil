@@ -1,5 +1,5 @@
-import { SUPPORTED_CHAINS } from '@signet/shared';
-import type { ChainConfig } from '@signet/shared';
+import { SUPPORTED_CHAINS } from '@sigil/shared';
+import type { ChainConfig } from '@sigil/shared';
 
 export { SUPPORTED_CHAINS };
 

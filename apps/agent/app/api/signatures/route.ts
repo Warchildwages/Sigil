@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
-import { createSignatureSchema } from '@signet/shared';
+import { prisma } from '@sigil/db';
+import { createSignatureSchema } from '@sigil/shared';
 
 export async function POST(request: Request) {
   try {

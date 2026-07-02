@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
-import type { MeetingSessionData, MeetingSharedDocument } from '@signet/shared';
+import type { MeetingSessionData, MeetingSharedDocument } from '@sigil/shared';
 
 interface MeetingAttendeeProps {
   session: MeetingSessionData;

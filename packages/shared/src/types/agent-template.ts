@@ -1,7 +1,7 @@
 /**
  * Agent Template & Deployment Types
  *
- * Core type system for @signet/agent-core — the framework for spawning
+ * Core type system for @sigil/agent-core — the framework for spawning
  * domain-specific AI agents on Arc with bridges to Base, Ethereum, and Avalanche.
  *
  * Phase 3 — Signet Agent Framework

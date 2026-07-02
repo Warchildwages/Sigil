@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import type { MeetingSessionData, MeetingSharedDocument } from '@signet/shared';
+import type { MeetingSessionData, MeetingSharedDocument } from '@sigil/shared';
 import { MeetingHost } from '@/components/meeting/MeetingHost';
 import { MeetingAttendee } from '@/components/meeting/MeetingAttendee';
 import { DocumentUploader } from '@/components/DocumentUploader';

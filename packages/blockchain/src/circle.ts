@@ -18,7 +18,7 @@ import {
   toPasskeyTransport,
   toWebAuthnCredential,
 } from '@circle-fin/modular-wallets-core';
-import { CHAIN_IDS } from '@signet/shared';
+import { CHAIN_IDS } from '@sigil/shared';
 import { type Transport, createPublicClient } from 'viem';
 import {
   type P256Credential,

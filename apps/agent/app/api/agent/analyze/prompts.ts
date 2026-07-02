@@ -1,4 +1,4 @@
-import type { AutoDetectedContext, AgentContextHint } from '@signet/shared';
+import type { AutoDetectedContext, AgentContextHint } from '@sigil/shared';
 
 /**
  * Builds a single comprehensive system prompt that instructs the LLM to

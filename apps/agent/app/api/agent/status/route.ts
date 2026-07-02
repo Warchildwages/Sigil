@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { AgentStatusResponse } from '@signet/shared';
+import type { AgentStatusResponse } from '@sigil/shared';
 import { SERVICE_INFO } from '@/app/api/x402/service-info/route';
 
 /**
@@ -26,7 +26,7 @@ export async function GET() {
 	const balanceUSDC = '0.00'; // Circle CLI needed for real balance; placeholder for demo
 
 	// Build identity status from env vars (real attestation data would come from
-	// @signet/blockchain's getAgentIdentity / verifyAgentIdentity when Base RPC is available)
+	// @sigil/blockchain's getAgentIdentity / verifyAgentIdentity when Base RPC is available)
 	const identityAttested = !!process.env.SIGNET_AGENT_WALLET_ADDRESS;
 	const agentId = process.env.SIGNET_AGENT_WALLET_ADDRESS || undefined;
 	const creatorAddress = process.env.SIGNET_CREATOR_ADDRESS || undefined;

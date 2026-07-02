@@ -2,8 +2,8 @@
 // Requires valid JWT session. Returns document count, attestation count, and recent documents.
 
 import { getSession } from '@/lib/auth';
-import { prisma } from '@signet/db';
-import type { AccountDashboardData } from '@signet/shared';
+import { prisma } from '@sigil/db';
+import type { AccountDashboardData } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';

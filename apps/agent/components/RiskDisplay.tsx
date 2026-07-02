@@ -1,6 +1,6 @@
 'use client';
 
-import type { RiskAssessment, BenchmarkComparison } from '@signet/shared';
+import type { RiskAssessment, BenchmarkComparison } from '@sigil/shared';
 import { useState } from 'react';
 
 interface RiskDisplayProps {

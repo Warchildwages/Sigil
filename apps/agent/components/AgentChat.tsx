@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import type { LegalKnowledgeResponse } from '@signet/shared';
+import type { LegalKnowledgeResponse } from '@sigil/shared';
 
 interface Message {
   role: 'user' | 'agent';

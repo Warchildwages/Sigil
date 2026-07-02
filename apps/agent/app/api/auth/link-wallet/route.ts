@@ -3,7 +3,7 @@
 
 import { NextResponse } from 'next/server';
 import { getSession, linkWalletToEntity } from '@/lib/auth';
-import type { LinkWalletRequest, LinkWalletResponse } from '@signet/shared';
+import type { LinkWalletRequest, LinkWalletResponse } from '@sigil/shared';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,5 +1,5 @@
-import type { X402ServiceListing } from '@signet/shared';
-import { X402_OPERATION_DESCRIPTIONS, X402_PRICING } from '@signet/shared';
+import type { X402ServiceListing } from '@sigil/shared';
+import { X402_OPERATION_DESCRIPTIONS, X402_PRICING } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import { casperServiceInfo } from '@/lib/x402-casper-adapter';
 

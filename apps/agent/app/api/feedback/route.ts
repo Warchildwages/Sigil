@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     }
 
     // Dynamic import so Prisma doesn't break during build if DB is down
-    const { prisma } = await import('@signet/db');
+    const { prisma } = await import('@sigil/db');
 
     const feedback = await prisma.feedback.create({
       data: {

@@ -241,7 +241,7 @@ model Feedback {
 }
 
 // ── Agent Memory & Knowledge Bank ──
-// @signet/agent-core — Phase 4
+// @sigil/agent-core — Phase 4
 
 model AgentMemoryEntry {
   id             String   @id @default(uuid())

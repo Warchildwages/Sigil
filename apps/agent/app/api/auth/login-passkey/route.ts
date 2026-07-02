@@ -1,15 +1,15 @@
 // POST /api/auth/login-passkey — login with an existing passkey (WebAuthn assertion)
 
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 import {
   createSessionToken,
   setSessionCookie,
   verifyChallenge,
   verifyPasskeyAssertion,
 } from '@/lib/auth';
-import { CSRF_COOKIE_NAME } from '@signet/shared';
-import type { PasskeyLoginRequest, LoginResponse } from '@signet/shared';
+import { CSRF_COOKIE_NAME } from '@sigil/shared';
+import type { PasskeyLoginRequest, LoginResponse } from '@sigil/shared';
 
 export const dynamic = 'force-dynamic';
 

@@ -3,8 +3,8 @@
 // Generates a downloadable, printable proof page with document metadata + attestation details
 
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import type { Attestation } from '@signet/shared';
-import { SUPPORTED_CHAINS } from '@signet/shared';
+import type { Attestation } from '@sigil/shared';
+import { SUPPORTED_CHAINS } from '@sigil/shared';
 
 export interface ProofPdfData {
   attestation: Attestation;

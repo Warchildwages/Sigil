@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { ContractModel, ExtractionResponse } from '@signet/shared';
+import type { ContractModel, ExtractionResponse } from '@sigil/shared';
 import { detectDocumentContext } from '../analyze/detector.js';
 import { buildExtractionPrompt } from '../analyze/prompts.js';
 import { getLlmConfig } from '@/lib/llm.js';

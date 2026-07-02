@@ -1,4 +1,4 @@
-import type { AnalyzeResult } from '@signet/shared';
+import type { AnalyzeResult } from '@sigil/shared';
 
 /**
  * Fallback analysis stub — returned when no LLM API key is available.

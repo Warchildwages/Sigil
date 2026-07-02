@@ -1,4 +1,4 @@
-import type { LegalKnowledgeRequest, LegalKnowledgeResponse, LegalKnowledgeSource } from '@signet/shared';
+import type { LegalKnowledgeRequest, LegalKnowledgeResponse, LegalKnowledgeSource } from '@sigil/shared';
 import { buildKnowledgePrompt } from '@/app/api/agent/analyze/prompts.js';
 import { getLlmConfig } from '@/lib/llm.js';
 

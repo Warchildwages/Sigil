@@ -10,7 +10,7 @@ vi.mock('@/lib/auth', () => ({
   getSession: vi.fn(),
 }));
 
-// Mock @signet/db
+// Mock @sigil/db
 const mockPrisma = {
   document: {
     count: vi.fn(),
@@ -21,7 +21,7 @@ const mockPrisma = {
   },
 };
 
-vi.mock('@signet/db', () => ({
+vi.mock('@sigil/db', () => ({
   prisma: mockPrisma,
 }));
 

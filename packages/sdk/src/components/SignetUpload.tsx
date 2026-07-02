@@ -1,5 +1,5 @@
 import { useCallback, useState, useRef } from 'react';
-import { hashDocument } from '@signet/blockchain/hash';
+import { hashDocument } from '@sigil/blockchain/hash';
 
 interface SignetUploadProps {
   onHash: (hash: `0x${string}`, file: File) => void;

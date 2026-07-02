@@ -1,4 +1,4 @@
-import type { DocumentCompleteness } from '@signet/shared';
+import type { DocumentCompleteness } from '@sigil/shared';
 
 /**
  * Check a document's text for required legal document elements.

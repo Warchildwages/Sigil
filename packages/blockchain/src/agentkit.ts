@@ -11,7 +11,7 @@
 // See: https://github.com/coinbase/agentkit (1,257 stars)
 //      https://github.com/coinbase/cdp-agentkit-nodejs (60 stars)
 
-import type { ChainConfig } from '@signet/shared';
+import type { ChainConfig } from '@sigil/shared';
 
 // AgentKit types — dynamically imported to avoid hard dependency
 // These match the CDP AgentKit Node.js SDK interface

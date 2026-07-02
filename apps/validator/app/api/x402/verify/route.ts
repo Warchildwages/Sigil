@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyAttestation, type VerificationRequest } from '../../../lib/validator-engine';
+import { verifyAttestation, type VerificationRequest } from '../../../../lib/validator-engine';
 
 export async function POST(req: NextRequest) {
   try {

@@ -2,8 +2,8 @@
 
 import { NextResponse } from 'next/server';
 import { createEntityFromPasskey, createSessionToken, setSessionCookie, verifyChallenge } from '@/lib/auth';
-import { CSRF_COOKIE_NAME } from '@signet/shared';
-import type { PasskeyRegisterRequest, LoginResponse } from '@signet/shared';
+import { CSRF_COOKIE_NAME } from '@sigil/shared';
+import type { PasskeyRegisterRequest, LoginResponse } from '@sigil/shared';
 
 export const dynamic = 'force-dynamic';
 

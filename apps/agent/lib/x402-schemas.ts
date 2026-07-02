@@ -1,7 +1,7 @@
 // x402 Request Validation Library
 //
 // Centralized Zod schema validation helpers for all x402 route handlers.
-// Schemas are defined in @signet/shared/validation — this module provides
+// Schemas are defined in @sigil/shared/validation — this module provides
 // the parsing helper used by all x402 routes.
 //
 // Phase B — Production hardening.
@@ -20,7 +20,7 @@ export {
   oracleRequestSchema,
   milestoneRequestSchema,
   translateRequestSchema,
-} from '@signet/shared';
+} from '@sigil/shared';
 
 // Re-export types from shared
 export type {
@@ -30,7 +30,7 @@ export type {
   EscrowWitnessResponse,
   DisputeResolutionRequest,
   DisputeResolutionResponse,
-} from '@signet/shared';
+} from '@sigil/shared';
 
 /**
  * Parse and validate JSON body against a Zod schema.

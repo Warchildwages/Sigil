@@ -1,6 +1,6 @@
-import { buildMemoId, getArcMemoExplorerUrl } from '@signet/blockchain';
-import { prisma } from '@signet/db';
-import { createAttestationSchema } from '@signet/shared';
+import { buildMemoId, getArcMemoExplorerUrl } from '@sigil/blockchain';
+import { prisma } from '@sigil/db';
+import { createAttestationSchema } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {

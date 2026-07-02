@@ -2,9 +2,9 @@
 // Uses @ethereum-attestation-service/eas-sdk SchemaEncoder for ABI encoding.
 // Attestation submission happens via the Circle Modular Wallet bundler (gasless, paymaster-sponsored).
 
-import type { SignetAttestationData } from '@signet/shared';
+import type { SignetAttestationData } from '@sigil/shared';
 import { SchemaEncoder } from '@ethereum-attestation-service/eas-sdk';
-import { EAS_CONTRACT_ADDRESS, SIGNET_EAS_SCHEMA, SUPPORTED_CHAINS } from '@signet/shared';
+import { EAS_CONTRACT_ADDRESS, SIGNET_EAS_SCHEMA, SUPPORTED_CHAINS } from '@sigil/shared';
 import { encodeFunctionData, keccak256, encodeAbiParameters } from 'viem';
 import type { SmartAccount } from 'viem/account-abstraction';
 import { sendUserOp } from './circle.js';

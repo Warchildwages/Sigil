@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { paymentRequiredResponse, verifyPaymentHeader } from '@/lib/x402-payment';
 import { milestoneRequestSchema } from '@/lib/x402-schemas';
-import type { MilestoneResponse } from '@signet/shared';
+import type { MilestoneResponse } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import { fireCasperAttestation } from '@/lib/casper-attest-helper';
 
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   );
 
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     const { prisma } = db;
     await prisma.milestoneRecord?.create({
       data: {

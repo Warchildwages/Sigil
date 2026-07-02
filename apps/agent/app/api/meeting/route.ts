@@ -1,7 +1,7 @@
 // @ts-nocheck  
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
-import type { CreateMeetingInput, MeetingSessionData } from '@signet/shared';
+import { prisma } from '@sigil/db';
+import type { CreateMeetingInput, MeetingSessionData } from '@sigil/shared';
 
 function generateJoinCode(): string {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';

@@ -1,7 +1,7 @@
 // @ts-nocheck  
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
-import type { MeetingSessionData } from '@signet/shared';
+import { prisma } from '@sigil/db';
+import type { MeetingSessionData } from '@sigil/shared';
 import { broadcastToRoom } from '@/lib/meeting-events';
 
 function serializeSession(session: {

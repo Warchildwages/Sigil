@@ -6,7 +6,7 @@
 // that can receive x402 payments, hold USDC, and execute on-chain calls.
 // This is the "notary-as-agent" wallet: it programmatically attests documents.
 
-import type { AgentWalletIdentity } from '@signet/shared';
+import type { AgentWalletIdentity } from '@sigil/shared';
 
 /**
  * Create a Circle agent wallet on the specified chain.

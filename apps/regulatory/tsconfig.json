@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@sigil/shared": ["../../packages/shared/src"],
+      "@sigil/blockchain": ["../../packages/blockchain/src"],
+      "@sigil/db": ["../../packages/db/src"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

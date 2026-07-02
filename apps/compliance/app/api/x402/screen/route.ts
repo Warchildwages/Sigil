@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { runComplianceCheck, type ComplianceCheck } from '../../../lib/compliance-engine';
+import { runComplianceCheck, type ComplianceCheck } from '../../../../lib/compliance-engine';
 
 export async function POST(req: NextRequest) {
   try {

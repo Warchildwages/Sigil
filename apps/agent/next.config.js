@@ -21,7 +21,7 @@ const cspHeader = [
 const nextConfig = {
   reactStrictMode: true,
   output: process.platform === 'linux' ? 'standalone' : undefined,
-  transpilePackages: ['@signet/shared', '@signet/db', '@signet/blockchain', '@signet/sdk'],
+  transpilePackages: ['@sigil/shared', '@sigil/db', '@sigil/blockchain', '@sigil/sdk'],
   webpack: (config) => {
     config.resolve.extensionAlias = {
       '.js': ['.ts', '.tsx', '.js'],

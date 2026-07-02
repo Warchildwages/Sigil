@@ -3,10 +3,10 @@
 // This login endpoint bridges the passkey-to-session gap.
 
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 import { createSessionToken, setSessionCookie } from '@/lib/auth';
-import { CSRF_COOKIE_NAME } from '@signet/shared';
-import type { LoginRequest, LoginResponse } from '@signet/shared';
+import { CSRF_COOKIE_NAME } from '@sigil/shared';
+import type { LoginRequest, LoginResponse } from '@sigil/shared';
 
 function generateCSRFToken(): string {
   const bytes = new Uint8Array(32);

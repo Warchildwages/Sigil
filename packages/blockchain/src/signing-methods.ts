@@ -2,8 +2,8 @@
 // Each method produces an EIP-712 typed signature over the document hash.
 // The signingMethod field records which UX was used (passkey, swipe, stylus, wallet_connect).
 
-import type { SigningMethod } from '@signet/shared';
-import { SIGNING_METHODS } from '@signet/shared';
+import type { SigningMethod } from '@sigil/shared';
+import { SIGNING_METHODS } from '@sigil/shared';
 import type { SmartAccount } from './circle.js';
 import { hashCanvasCapture } from './hash.js';
 

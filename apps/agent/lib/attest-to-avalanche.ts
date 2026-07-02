@@ -32,8 +32,8 @@ export async function writeAttestation(
 
   try {
     // EAS is deployed on Avalanche C-Chain at 0x4200000000000000000000000000000000000021
-    // The existing EAS attestation flow in @signet/blockchain supports it via chainId 43113/43114
-    const { encodeAttestationData } = await import('@signet/blockchain');
+    // The existing EAS attestation flow in @sigil/blockchain supports it via chainId 43113/43114
+    const { encodeAttestationData } = await import('@sigil/blockchain');
 
     const attestationData = {
       contentHash: record.proof_hash as `0x${string}`,

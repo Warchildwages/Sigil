@@ -6,10 +6,10 @@
 //
 // Phase 2 (P2): Deploy Signet agent on Avalanche C-Chain (~2h).
 
-import type { ChainConfig } from '@signet/shared';
-import type { AgentIdentity } from '@signet/shared';
+import type { ChainConfig } from '@sigil/shared';
+import type { AgentIdentity } from '@sigil/shared';
 
-/** Avalanche C-Chain configurations — matching ChainConfig shape from @signet/shared */
+/** Avalanche C-Chain configurations — matching ChainConfig shape from @sigil/shared */
 export const AVALANCHE_CHAINS: Record<string, ChainConfig> = {
   mainnet: {
     chainId: 43114,

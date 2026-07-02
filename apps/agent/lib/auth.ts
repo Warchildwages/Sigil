@@ -11,9 +11,9 @@ import {
   PASSKEY_CHALLENGE_COOKIE,
   SESSION_DURATION_MS,
   PASSKEY_CHALLENGE_TTL_MS,
-} from '@signet/shared';
-import type { JwtPayload, SessionResponse } from '@signet/shared';
-import { prisma } from '@signet/db';
+} from '@sigil/shared';
+import type { JwtPayload, SessionResponse } from '@sigil/shared';
+import { prisma } from '@sigil/db';
 
 // Secret derived from env or a demo fallback (rotate before production)
 function getSecret(): Uint8Array {

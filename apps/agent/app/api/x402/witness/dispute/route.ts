@@ -70,7 +70,7 @@ export async function POST(request: Request) {
   const rulingAttestationUid = sha256(rulingPayload);
 
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     await db.prisma.disputeRecord?.create({
       data: {
         disputeId, escrowWitnessId: body.escrowWitnessId,

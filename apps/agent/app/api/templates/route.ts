@@ -2,7 +2,7 @@
 // POST /api/templates — fill a template with provided fields
 
 import { NextResponse } from 'next/server';
-import { DOCUMENT_TEMPLATES, fillTemplate, getTemplateById } from '@signet/shared';
+import { DOCUMENT_TEMPLATES, fillTemplate, getTemplateById } from '@sigil/shared';
 
 export async function GET() {
   try {

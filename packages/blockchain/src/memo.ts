@@ -246,7 +246,7 @@ export async function executeMemoTransaction(
 ): Promise<MemoExecutionResult> {
   // Dynamic import to avoid circular dependency at module init
   const { sendUserOp } = await import('./circle.js');
-  const { CHAIN_IDS } = await import('@signet/shared');
+  const { CHAIN_IDS } = await import('@sigil/shared');
 
   const { callData, memoId } = prepareMemoCall(documentHash, signerAddress, attestationUID);
 

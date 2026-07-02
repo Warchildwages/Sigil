@@ -1,4 +1,4 @@
-// Public API surface for @signet/sdk
+// Public API surface for @sigil/sdk
 
 // Main components
 export { SignetProvider, useSignetContext } from './SignetProvider.js';

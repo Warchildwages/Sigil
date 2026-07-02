@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { paymentRequiredResponse, verifyPaymentHeader } from '@/lib/x402-payment';
 import { witnessRequestSchema } from '@/lib/x402-schemas';
-import type { WitnessResponse } from '@signet/shared';
+import type { WitnessResponse } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import { fireCasperAttestation } from '@/lib/casper-attest-helper';
 
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
   const memoIdResult = memo ? `memo_${sha256(`${witnessId}:${memo}`).slice(2, 18)}` : undefined;
 
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     const { prisma } = db;
     await prisma.witnessRecord?.create({
       data: {

@@ -1,4 +1,4 @@
-import type { AutoDetectedContext, EmphasisVector } from '@signet/shared';
+import type { AutoDetectedContext, EmphasisVector } from '@sigil/shared';
 
 /**
  * Scans document text for keyword signals to auto-detect the legal context.
@@ -81,7 +81,7 @@ export function detectDocumentContext(text: string): AutoDetectedContext {
   return 'general-legal';
 }
 
-// ── Complexity Scorer (inlined from @signet/agent-core) ──
+// ── Complexity Scorer (inlined from @sigil/agent-core) ──
 
 interface ComplexityScoreInput {
   documentType: string;
@@ -146,7 +146,7 @@ export function getComplexityLabel(
   return 'critical';
 }
 
-// ── Persona Detector (inlined from @signet/agent-core) ──
+// ── Persona Detector (inlined from @sigil/agent-core) ──
 
 interface KeywordRule {
   keywords: string[];

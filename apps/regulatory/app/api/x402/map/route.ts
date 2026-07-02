@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { runRegulatoryCheck, type RegulatoryCheck } from '../../../lib/regulatory-engine';
+import { runRegulatoryCheck, type RegulatoryCheck } from '../../../../lib/regulatory-engine';
 
 export async function POST(req: NextRequest) {
   try {

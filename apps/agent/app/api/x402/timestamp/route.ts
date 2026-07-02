@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { paymentRequiredResponse, verifyPaymentHeader } from '@/lib/x402-payment';
 import { timestampRequestSchema } from '@/lib/x402-schemas';
-import type { TimestampResponse } from '@signet/shared';
+import type { TimestampResponse } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import { fireCasperAttestation } from '@/lib/casper-attest-helper';
 
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   );
 
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     const { prisma } = db;
     await prisma.timestampRecord?.create({
       data: {

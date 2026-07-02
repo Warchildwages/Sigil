@@ -1,6 +1,6 @@
 'use client';
 
-import type { SigningMethod } from '@signet/shared';
+import type { SigningMethod } from '@sigil/shared';
 import { useState, useRef, useCallback } from 'react';
 import { useSignetAuth } from '@/components/SignetAuthProvider';
 import {
@@ -8,8 +8,8 @@ import {
   signWithSwipe,
   signWithStylus,
   type SigningResult,
-} from '@signet/blockchain/signing-methods';
-import type { SmartAccount } from '@signet/blockchain/circle';
+} from '@sigil/blockchain/signing-methods';
+import type { SmartAccount } from '@sigil/blockchain/circle';
 
 interface SignaturePanelProps {
   documentHash: `0x${string}` | null;

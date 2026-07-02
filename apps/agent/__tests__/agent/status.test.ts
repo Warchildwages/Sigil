@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { agentStatusResponseSchema } from '@signet/shared';
+import { agentStatusResponseSchema } from '@sigil/shared';
 
 describe('Agent Status Response Schema', () => {
 	it('validates a complete AgentStatusResponse', () => {

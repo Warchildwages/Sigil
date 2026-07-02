@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { paymentRequiredResponse, verifyPaymentHeader } from '@/lib/x402-payment';
 import { escrowWitnessRequestSchema } from '@/lib/x402-schemas';
-import type { EscrowWitnessResponse } from '@signet/shared';
+import type { EscrowWitnessResponse } from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import { fireCasperAttestation } from '@/lib/casper-attest-helper';
 
@@ -41,7 +41,7 @@ async function getEscrow(id: string): Promise<EscrowWitnessResponse | null> {
 
   // Read from DB (authoritative)
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     const record = await db.prisma.escrowRecord?.findUnique({
       where: { escrowWitnessId: id },
     });
@@ -78,7 +78,7 @@ async function upsertEscrow(escrow: EscrowWitnessResponse): Promise<void> {
 
   // Write to DB (authoritative)
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     await db.prisma.escrowRecord?.upsert({
       where: { escrowWitnessId: escrow.escrowWitnessId },
       update: {

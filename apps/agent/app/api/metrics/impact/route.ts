@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 
 async function getPrisma() {
   try {
-    const db = await import('@signet/db');
+    const db = await import('@sigil/db');
     return db.prisma;
   } catch {
     return null;

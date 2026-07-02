@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { synthesizeLegalKnowledge } from '@/lib/legal-knowledge.js';
-import type { LegalKnowledgeResponse } from '@signet/shared';
+import type { LegalKnowledgeResponse } from '@sigil/shared';
 
 /**
  * POST /api/agent/knowledge

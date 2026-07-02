@@ -3,7 +3,7 @@
 
 import { NextResponse } from 'next/server';
 import { generateChallenge } from '@/lib/auth';
-import { PASSKEY_CHALLENGE_TTL_MS } from '@signet/shared';
+import { PASSKEY_CHALLENGE_TTL_MS } from '@sigil/shared';
 
 export const dynamic = 'force-dynamic';
 

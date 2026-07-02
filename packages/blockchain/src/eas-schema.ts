@@ -1,5 +1,5 @@
-import type { SignetAttestationData } from '@signet/shared';
-import { SIGNET_EAS_SCHEMA, SUPPORTED_CHAINS } from '@signet/shared';
+import type { SignetAttestationData } from '@sigil/shared';
+import { SIGNET_EAS_SCHEMA, SUPPORTED_CHAINS } from '@sigil/shared';
 import { encodeFunctionData, encodeAbiParameters, keccak256, stringToBytes } from 'viem';
 import type { SmartAccount } from 'viem/account-abstraction';
 import { sendUserOp } from './circle.js';

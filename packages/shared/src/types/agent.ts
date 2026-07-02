@@ -28,9 +28,9 @@ export interface AgentAnalysisResponse {
   completeness: import('./analysis.js').DocumentCompleteness | null;
   /** Consumer-facing risk assessment with benchmarks and plain-English (Phase 2.5 — /review) */
   risk?: import('./analysis.js').RiskAssessment;
-  /** Complexity scoring from @signet/agent-core */
+  /** Complexity scoring from @sigil/agent-core */
   complexity?: { score: number; label: string };
-  /** Detected personas/emphasis vectors from @signet/agent-core */
+  /** Detected personas/emphasis vectors from @sigil/agent-core */
   personas?: string[];
   generatedAt: string; // ISO 8601
   modelUsed: string; // e.g. "groq/llama-3.2-3b", "openai/gpt-4o-mini"

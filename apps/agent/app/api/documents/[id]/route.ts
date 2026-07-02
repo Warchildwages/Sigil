@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 
 export async function GET(
   _request: Request,

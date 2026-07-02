@@ -1,4 +1,4 @@
-import type { SigningMethod } from '@signet/shared';
+import type { SigningMethod } from '@sigil/shared';
 
 /**
  * Document mode determines the template context for the widget.

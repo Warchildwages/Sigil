@@ -13,7 +13,7 @@
 // which broke semantic security (deterministic encryption).
 
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 import { getSession } from '@/lib/auth';
 import { pinToIPFS } from '@/lib/ipfs';
 import {

@@ -1,7 +1,7 @@
 'use client';
 
 import { AgentChat } from '@/components/AgentChat';
-import type { AgentStatusResponse } from '@signet/shared';
+import type { AgentStatusResponse } from '@sigil/shared';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 

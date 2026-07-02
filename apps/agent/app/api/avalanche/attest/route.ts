@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { getAvalancheChainConfig } from '@signet/blockchain';
+import { getAvalancheChainConfig } from '@sigil/blockchain';
 import { NextResponse } from 'next/server';
 
 /**

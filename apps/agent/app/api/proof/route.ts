@@ -3,7 +3,7 @@
 // Protected route (requires auth via middleware)
 
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 import { getSession } from '@/lib/auth';
 import { generateProofPdf } from '@/lib/proof-pdf';
 

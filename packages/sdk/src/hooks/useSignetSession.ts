@@ -1,11 +1,11 @@
 import { useState, useCallback, useRef } from 'react';
-import type { SigningMethod } from '@signet/shared';
+import type { SigningMethod } from '@sigil/shared';
 import type { SignetStep, SignetPrefillData } from '../types.js';
 import { useSignetApi } from './useSignetApi.js';
-import type { SmartAccount } from '@signet/blockchain/circle';
-import { attestOnChain } from '@signet/blockchain/eas';
-import { registerSchema, SIGNET_SCHEMA_UID } from '@signet/blockchain/eas-schema';
-import { EAS_CONTRACT_ADDRESS, CHAIN_IDS } from '@signet/shared';
+import type { SmartAccount } from '@sigil/blockchain/circle';
+import { attestOnChain } from '@sigil/blockchain/eas';
+import { registerSchema, SIGNET_SCHEMA_UID } from '@sigil/blockchain/eas-schema';
+import { EAS_CONTRACT_ADDRESS, CHAIN_IDS } from '@sigil/shared';
 
 interface UseSignetSessionOptions {
   apiBaseUrl: string;

@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
-import type { SigningMethod } from '@signet/shared';
-import type { SmartAccount } from '@signet/blockchain/circle';
+import type { SigningMethod } from '@sigil/shared';
+import type { SmartAccount } from '@sigil/blockchain/circle';
 
 interface SignetSignProps {
   documentHash: `0x${string}` | null;

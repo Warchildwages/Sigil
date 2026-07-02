@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { NextResponse } from 'next/server';
-import type { LegalKnowledgeResponse } from '@signet/shared';
+import type { LegalKnowledgeResponse } from '@sigil/shared';
 import { synthesizeLegalKnowledge } from '@/lib/legal-knowledge.js';
 
 /**

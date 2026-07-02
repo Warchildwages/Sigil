@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { AgentAnalysisResponse } from '@signet/shared';
+import type { AgentAnalysisResponse } from '@sigil/shared';
 
 /**
  * POST /api/x402/analyze

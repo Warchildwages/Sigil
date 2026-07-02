@@ -6,7 +6,7 @@
 // Recipients (lawyers, banks, counterparties) can independently verify the attestation on-chain.
 
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
+import { prisma } from '@sigil/db';
 import { getSession } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';

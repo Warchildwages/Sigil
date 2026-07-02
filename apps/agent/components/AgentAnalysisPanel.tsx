@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import type { AgentAnalysisResponse, AutoDetectedContext, ExtractionResponse, ContractModel } from '@signet/shared';
-import { CSRF_HEADER_NAME } from '@signet/shared';
+import type { AgentAnalysisResponse, AutoDetectedContext, ExtractionResponse, ContractModel } from '@sigil/shared';
+import { CSRF_HEADER_NAME } from '@sigil/shared';
 
 interface AgentAnalysisPanelProps {
   /** If provided, shows the result from a prior API call */

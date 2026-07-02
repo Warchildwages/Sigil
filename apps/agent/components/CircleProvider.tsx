@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { initSignetCircle } from '@signet/blockchain/circle';
+import { initSignetCircle } from '@sigil/blockchain/circle';
 
 interface CircleProviderProps {
   children: ReactNode;

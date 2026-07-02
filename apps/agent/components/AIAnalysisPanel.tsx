@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { DocumentCompleteness } from '@signet/shared';
+import type { DocumentCompleteness } from '@sigil/shared';
 
 interface AIAnalysisPanelProps {
   documentHash: `0x${string}` | null;

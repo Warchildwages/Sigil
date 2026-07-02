@@ -5,7 +5,7 @@ import type {
   AgentContextHint,
   BenchmarkComparison,
   RiskAssessment,
-} from '@signet/shared';
+} from '@sigil/shared';
 import { NextResponse } from 'next/server';
 import {
   detectDocumentContext,
@@ -65,7 +65,7 @@ export async function POST(request: Request) {
     // ── Step 1: Auto-detect document context ──
     const detectedContext = detectDocumentContext(trimmedText);
 
-    // ── Step 1.5: Complexity scoring (inlined from @signet/agent-core) ──
+    // ── Step 1.5: Complexity scoring (inlined from @sigil/agent-core) ──
     // Count seed text matches from the detector's keyword signals as a proxy
     const seedMatchCount = [].length; // detector uses keyword hits internally
     const complexityScore = scoreComplexity({
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
     });
     const complexityLabel = getComplexityLabel(complexityScore);
 
-    // ── Step 1.6: Persona detection (inlined from @signet/agent-core) ──
+    // ── Step 1.6: Persona detection (inlined from @sigil/agent-core) ──
     const personas = detectPersona(trimmedText);
 
     // ── Step 2: Build comprehensive prompt ──

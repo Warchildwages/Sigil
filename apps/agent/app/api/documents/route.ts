@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@signet/db';
-import { createDocumentSchema } from '@signet/shared';
+import { prisma } from '@sigil/db';
+import { createDocumentSchema } from '@sigil/shared';
 import { getSession } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';

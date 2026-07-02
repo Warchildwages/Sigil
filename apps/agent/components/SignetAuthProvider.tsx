@@ -13,8 +13,8 @@ import type {
   SessionResponse,
   LoginResponse,
   AuthMethod,
-} from '@signet/shared';
-import type { SmartAccount, P256Credential } from '@signet/blockchain/circle';
+} from '@sigil/shared';
+import type { SmartAccount, P256Credential } from '@sigil/blockchain/circle';
 import {
   initSignetCircle,
   registerPasskey,
@@ -22,8 +22,8 @@ import {
   createSmartAccount,
   serializeCredential,
   type SupportedChainId,
-} from '@signet/blockchain/circle';
-import { CSRF_HEADER_NAME, CHAIN_IDS } from '@signet/shared';
+} from '@sigil/blockchain/circle';
+import { CSRF_HEADER_NAME, CHAIN_IDS } from '@sigil/shared';
 
 interface SignetAuthContextValue {
   isAuthenticated: boolean;

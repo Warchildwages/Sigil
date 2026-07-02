@@ -2,7 +2,7 @@
  * Signet Agent E2E Test Suite
  *
  * Runs against a live Next.js dev server (typically http://localhost:3000).
- * Start with: pnpm exec turbo run dev --filter=@signet/demo
+ * Start with: pnpm exec turbo run dev --filter=@sigil/demo
  * Then run: pnpm exec vitest run apps/demo/__tests__/agent/e2e.test.ts
  */
 import { beforeAll, describe, expect, it } from 'vitest';
