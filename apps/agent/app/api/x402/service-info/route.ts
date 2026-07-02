@@ -25,9 +25,15 @@ export const SERVICE_INFO: X402ServiceListing = {
     oracle: { price: X402_PRICING.oracle as number, description: X402_OPERATION_DESCRIPTIONS.oracle as string },
     milestone: { price: X402_PRICING.milestone as number, description: X402_OPERATION_DESCRIPTIONS.milestone as string },
     translate: { price: X402_PRICING.translate as number, description: X402_OPERATION_DESCRIPTIONS.translate as string },
+    evaluate: { price: 0, description: 'Discover and evaluate swarm agents' },
   },
   rateLimit: { requestsPerMinute: 10, maxDocumentSizeBytes: 20000 },
   receivesPaymentAt: AGENT_WALLET,
+  swarm: [
+    { name: 'Compliance ⚖️', identity: 'compliance.cspr', operations: ['screen', 'report', 'status', 'demo'] },
+    { name: 'Regulatory 📋', identity: 'regulatory.cspr', operations: ['map', 'report', 'status', 'demo'] },
+    { name: 'Validator ✅', identity: 'validator.cspr', operations: ['verify', 'prove', 'status', 'demo'] },
+  ],
 };
 
 export async function GET() {

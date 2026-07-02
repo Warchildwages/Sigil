@@ -53,6 +53,8 @@ export const X402_OPERATION_DESCRIPTIONS: Record<string, string> = {
     'Standalone deliverable verification (lighter than full escrow). Verify a milestone against acceptance criteria, attest completion.',
   translate:
     'Translation fidelity attestation: verify a translation is faithful to the source document. Attest accuracy or specific discrepancies.',
+  evaluate:
+    'Swarm agent discovery and evaluation: discover agents via MCP, test each operation, score reliability and capability, rank results.',
 };
 
 /** All valid operation IDs */
