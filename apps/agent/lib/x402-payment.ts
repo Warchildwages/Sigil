@@ -87,7 +87,7 @@ export async function verifyPaymentHeader(
   headers: Headers,
   expectedOperation: string,
   expectedAmountUSDC?: number,
-): PaymentVerificationResult {
+): Promise<PaymentVerificationResult> {
   // Try PAYMENT-SIGNATURE (x402 standard, crypto-verified)
   const paymentSignature = headers.get('PAYMENT-SIGNATURE');
   if (paymentSignature) {
@@ -122,7 +122,7 @@ async function verifyCryptographicPayment(
   raw: string,
   operation: string,
   expectedAmountUSDC?: number,
-): PaymentVerificationResult {
+): Promise<PaymentVerificationResult> {
   let payload: ExactCasperPayload;
   let auth: ExactCasperAuthorization;
 
@@ -196,7 +196,7 @@ async function verifyCryptographicPayment(
         const sdkResult = await verifyCasperX402Payment(
           new Request('http://localhost', { headers: { 'X-Casper-Payment': raw } }),
           operation,
-          expectedAmountUSDC,
+          expectedAmountUSDC ?? 0,
         );
         if (!sdkResult.valid) {
           console.warn(`[x402 payment] Casper SDK verification flagged: ${sdkResult.error}`);

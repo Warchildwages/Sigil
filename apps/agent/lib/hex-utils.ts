@@ -21,3 +21,12 @@ export function decodeHex(hex: string): Uint8Array {
   }
   return bytes;
 }
+
+/**
+ * Encode a Uint8Array to hex string (no 0x prefix).
+ */
+export function encodeHex(bytes: Uint8Array): string {
+  return Array.from(bytes)
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
