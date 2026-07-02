@@ -9,12 +9,13 @@ const BUILDER_CODE = process.env.SIGNET_BUILDER_CODE || 'bc_2jqg6gik';
 
 export const SERVICE_INFO: X402ServiceListing = {
   serviceId: 'sigil-v1',
-  name: 'Sigil — Legal Clarity Agent by Signet',
+  name: 'Sigil 🦅 — Agent Trust Layer & On-Chain Notary',
   description:
-    'AI-powered legal document analysis, risk scoring, industry benchmarks, contract structure extraction, legal knowledge Q&A, agent-to-agent witnessing, escrow verification, binding dispute resolution, proof of existence timestamping, regulatory compliance auditing, agent reputation scoring, legal event oracle, milestone verification, and translation fidelity attestation. Pay per use in USDC via Circle x402 nanopayments.',
+    'Sigil is the trust anchor for the agentic economy. Casper MCP tells you where agents are. Sigil tells you which ones to trust. Services: agent identity notarization (certify a key belongs to an agent), reputation attestation (verified track record, dispute history, reliability score), contract safety verification (audit smart contracts for vulnerabilities), cross-chain identity witnessing (link Ed25519 keys to EVM addresses), agent evaluation (score swarm agents by capability + reliability), and binding dispute resolution between agents. All services produce permanent EAS attestations. Pay per use in USDC via x402 nanopayments.',
   docsUrl: 'https://signet.ventures/docs/agent',
   endpoint: 'https://signet.ventures/api/x402',
   priceUSDC: X402_PRICING.analyze as number,
+  category: 'trust-layer',
   operations: {
     analyze: { price: X402_PRICING.analyze as number, description: X402_OPERATION_DESCRIPTIONS.analyze as string },
     knowledge: { price: X402_PRICING.knowledge as number, description: X402_OPERATION_DESCRIPTIONS.knowledge as string },
