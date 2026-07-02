@@ -1,0 +1,23 @@
+import Link from 'next/link';
+
+export default function NotFound() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center px-4">
+      <div className="signet-card max-w-lg text-center">
+        <p className="mb-4 font-mono text-6xl text-white/20">404</p>
+        <h1 className="mb-3 font-mono text-sm tracking-[0.3em] text-white/40 uppercase">
+          Page Not Found
+        </h1>
+        <p className="mb-8 font-mono text-xs text-white/30">
+          This page has not been notarized on-chain.
+        </p>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2 font-mono text-xs font-medium text-black transition hover:bg-white/90"
+        >
+          ← Return to Signet
+        </Link>
+      </div>
+    </main>
+  );
+}

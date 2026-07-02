@@ -1,0 +1,490 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model Entity {
+  id                  String         @id @default(uuid())
+  name                String
+  type                EntityType
+  parentEntity        Entity?        @relation("EntityHierarchy", fields: [parentEntityId], references: [id])
+  parentEntityId      String?
+  children            Entity[]       @relation("EntityHierarchy")
+  walletAddress       String?        // Circle Smart Wallet address
+  passkeyCredentialId String?        // base64url-encoded WebAuthn credential ID (individuals)
+  passkeyPublicKey    String?        // base64url-encoded raw P-256 public key
+  roles               Role[]
+  signatures          Signature[]
+  documents           Document[]
+  linkedWallets       LinkedWallet[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+}
+
+model Role {
+  id            String         @id @default(uuid())
+  entity        Entity         @relation(fields: [entityId], references: [id])
+  entityId      String
+  name          String
+  permissions   String[]       // ["sign", "attest", "notarize", "witness", "vote"]
+  officeholders Officeholder[]
+  signatures    Signature[]
+}
+
+model Officeholder {
+  id            String      @id @default(uuid())
+  role          Role        @relation(fields: [roleId], references: [id])
+  roleId        String
+  walletAddress String      // Person's Circle passkey wallet
+  displayName   String
+  termStart     DateTime
+  termEnd       DateTime?   // null = currently in office
+  signatures    Signature[]
+  createdAt     DateTime    @default(now())
+}
+
+model Document {
+  id                String             @id @default(uuid())
+  title             String
+  contentHash       String             // SHA-256 hex
+  contentUri        String?            // IPFS CID or encrypted storage pointer
+  markdownUri       String?            // IPFS CID of searchable markdown version (from Stirling OCR)
+  encryptedKey      String?            // AES-GCM encrypted random document key (hex), wrapped with entity KEK
+  keyIv             String?            // IV for encryptedKey (hex)
+  mimeType          String
+  status            DocumentStatus     @default(draft)
+  privacyMode       PrivacyMode        @default(public)
+  chainId           Int                @default(84532) // Base Sepolia default
+  createdByEntity   Entity             @relation(fields: [createdByEntityId], references: [id])
+  createdByEntityId String
+  signatures        Signature[]
+  attestations      Attestation[]
+  meetingDocuments  MeetingDocument[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([createdByEntityId])
+  @@index([status])
+  @@index([contentHash])
+}
+
+model Signature {
+  id                 String          @id @default(uuid())
+  document           Document        @relation(fields: [documentId], references: [id])
+  documentId         String
+  entity             Entity          @relation(fields: [entityId], references: [id])
+  entityId           String
+  role               Role?           @relation(fields: [roleId], references: [id])
+  roleId             String?
+  officeholder       Officeholder?   @relation(fields: [officeholderId], references: [id])
+  officeholderId     String?
+  signerWallet       String
+  signatureProof     String          // EIP-712 typed signature hex
+  signingMethod      SigningMethod   // passkey | swipe | stylus | wallet_connect
+  supplementaryProof String?         // Hash of stylus capture (only when signingMethod=stylus)
+  chainId            Int
+  status             SignatureStatus @default(pending)
+  signedAt           DateTime?
+  createdAt          DateTime        @default(now())
+
+  @@index([documentId])
+  @@index([entityId])
+}
+
+model Attestation {
+  id              String          @id @default(uuid())
+  document        Document        @relation(fields: [documentId], references: [id])
+  documentId      String
+  protocol        AttestationProtocol @default(EAS)
+  protocolUid     String          @unique
+  schemaUid       String
+  attester        String
+  recipient       String
+  data            String          // ABI-encoded attestation data
+  privacyMode     PrivacyMode     @default(public)
+  chainId         Int
+  blockNumber     Int?
+  transactionHash String?
+  memoId          String?         // Arc Memo: keccak256("notarial-act-" + contentHash)
+  memoIndex       String?         // Arc Memo: sequential journal index from BeforeMemo event
+  sequentialNumber Int?           // Per-notary sequential journal entry number (1-based)
+  attestedAt      DateTime?
+  createdAt       DateTime        @default(now())
+
+  @@index([documentId])
+  @@index([protocolUid])
+  @@index([memoId])
+  @@index([attester, sequentialNumber])
+}
+
+enum EntityType {
+  individual
+  corporation
+  elected_office
+  department
+  government_agency
+  presidential_office
+  legislature
+}
+
+enum DocumentStatus {
+  draft
+  pending_signatures
+  signed
+  attested
+  amended
+  revoked
+}
+
+enum PrivacyMode {
+  public
+  semi_private
+  fully_private
+}
+
+enum SignatureStatus {
+  pending
+  signed
+  declined
+}
+
+enum SigningMethod {
+  passkey
+  swipe
+  stylus
+  wallet_connect
+}
+
+enum AttestationProtocol {
+  EAS
+  ArcaneVM
+  Avalanche_Subnet
+  Solana_Attestation
+}
+
+model MeetingSession {
+  id                String             @id @default(uuid())
+  title             String
+  shortJoinCode     String             @unique
+  status            MeetingStatus      @default(active)
+  hostName          String
+  hostEntityId      String?
+  chainId           Int                @default(84532)
+  attestedAt        DateTime?
+  attestationTxHash String?
+  attestationUid    String?
+  documents         MeetingDocument[]
+  attendees         MeetingAttendee[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([shortJoinCode])
+  @@index([status])
+}
+
+model MeetingDocument {
+  id              String         @id @default(uuid())
+  meetingSession  MeetingSession @relation(fields: [meetingSessionId], references: [id])
+  meetingSessionId String
+  document        Document       @relation(fields: [documentId], references: [id])
+  documentId      String
+  title           String
+  sharedAt        DateTime       @default(now())
+  signingActive   Boolean        @default(false)
+  signedByAll     Boolean        @default(false)
+
+  @@index([meetingSessionId])
+}
+
+model MeetingAttendee {
+  id              String         @id @default(uuid())
+  meetingSession  MeetingSession @relation(fields: [meetingSessionId], references: [id])
+  meetingSessionId String
+  attendeeName    String
+  stylusSignature String?        // SVG of drawn signature
+  signedDocumentIds String[]     @default([]) // document IDs this attendee has signed
+  notes           String?        @db.Text
+  joinedAt        DateTime       @default(now())
+
+  @@index([meetingSessionId])
+}
+
+enum MeetingStatus {
+  active
+  attested
+  cancelled
+}
+
+model LinkedWallet {
+  id                  String    @id @default(uuid())
+  entity              Entity    @relation(fields: [entityId], references: [id])
+  entityId            String
+  walletAddress       String    @unique // 0x-prefixed smart account address
+  passkeyCredentialId String?   // base64url credential ID
+  passkeyPublicKey    String?   // base64url P-256 public key
+  label               String?   // "iPhone passkey", "YubiKey", "Office hardware key"
+  roleName            String?   // "CEO", "Notary Public"
+  createdAt           DateTime  @default(now())
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  pageUrl   String
+  message   String   @db.Text
+  email     String?
+  createdAt DateTime @default(now())
+}
+
+// ── Agent Memory & Knowledge Bank ──
+// @signet/agent-core — Phase 4
+
+model AgentMemoryEntry {
+  id             String   @id @default(uuid())
+  agentId        String
+  content        String   @db.Text
+  embedding      Float[]  // Vector embedding for similarity search
+  relevanceScore Float    @default(0)
+  metadata       Json?    // Optional structured metadata
+  createdAt      DateTime @default(now())
+
+  @@index([agentId])
+  @@index([createdAt])
+}
+
+model KnowledgeBankFinding {
+  id           String   @id @default(uuid())
+  agentId      String
+  documentHash String
+  category     String
+  content      String   @db.Text
+  severity     String?  // low, medium, high, critical
+  metadata     Json?    // Optional structured metadata
+  createdAt    DateTime @default(now())
+
+  @@index([agentId])
+  @@index([agentId, category])
+  @@index([documentHash])
+}
+
+model LiveBenchmark {
+  id        String   @id @default(uuid())
+  agentId   String
+  metric    String
+  value     Float
+  unit      String
+  timestamp DateTime @default(now())
+
+  @@index([agentId])
+  @@index([agentId, metric])
+}
+
+model AgentDeploymentRecord {
+  id                  String   @id @default(uuid())
+  agentId             String   @unique
+  templateId          String
+  walletAddress       String
+  chainId             Int
+  x402Endpoint        String
+  knowledgeBankSchema String
+  status              String   @default("active") // active, inactive, error
+  runtimeMode         String
+  deployedAt          DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([templateId])
+  @@index([status])
+}
+
+// ── x402 Service Records (Phase B — Production Hardening) ──
+
+model WitnessRecord {
+  id              String   @id @default(uuid())
+  witnessId       String   @unique
+  event           String   @db.Text
+  evidenceHash    String
+  evidenceUri     String?
+  initiator       String
+  counterparty    String
+  chainId         Int
+  memo            String?  @db.Text
+  attestationUid  String?
+  attestationTx   String?
+  memoId          String?
+  memoTx          String?
+  paymentId       String?
+  paymentAmountUSDC String? @default("0.02")
+  paymentVerified Boolean  @default(false)
+  status          String   @default("pending") // pending, attested, failed
+  witnessedAt     DateTime?
+  createdAt       DateTime @default(now())
+
+  @@index([witnessId])
+  @@index([initiator])
+  @@index([counterparty])
+  @@index([attestationUid])
+  @@index([paymentId])
+}
+
+model EscrowRecord {
+  id                        String   @id @default(uuid())
+  escrowWitnessId           String   @unique
+  externalEscrowId          String
+  amountUSDC                String
+  deliverableDescription    String   @db.Text
+  deliverableHash           String
+  depositor                 String
+  beneficiary               String
+  chainId                   Int
+  phase                     String   @default("deposited") // deposited, verified, attested, released, disputed
+  depositAttestationUid     String?
+  verificationAttestationUid String?
+  releaseAttestationUid     String?
+  disputeAttestationUid     String?
+  memoId                    String?
+  lastPaymentId             String?
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  @@index([escrowWitnessId])
+  @@index([externalEscrowId])
+  @@index([phase])
+}
+
+model DisputeRecord {
+  id                  String   @id @default(uuid())
+  disputeId           String   @unique
+  escrowWitnessId     String
+  initiatorEvidenceHash String
+  initiatorDescription  String   @db.Text
+  initiatorEvidenceUri  String?
+  counterpartyEvidenceHash String
+  counterpartyDescription  String   @db.Text
+  counterpartyEvidenceUri  String?
+  ruling              String   // for_initiator, for_counterparty, split, inconclusive
+  reasoning           String   @db.Text
+  recommendedAction   String   // release_to_initiator, release_to_counterparty, split_and_release, manual_review
+  rulingAttestationUid String?
+  paymentId           String?
+  resolvedAt          DateTime?
+  createdAt           DateTime @default(now())
+
+  @@index([disputeId])
+  @@index([escrowWitnessId])
+  @@index([ruling])
+}
+
+model TimestampRecord {
+  id              String   @id @default(uuid())
+  timestampId     String   @unique
+  contentHash     String
+  contentUri      String?
+  description     String   @db.Text
+  chainId         Int
+  attestationUid  String?
+  memoId          String?
+  paymentId       String?
+  attestedAt      DateTime?
+  createdAt       DateTime @default(now())
+
+  @@index([timestampId])
+  @@index([contentHash])
+}
+
+model ComplianceRecord {
+  id              String   @id @default(uuid())
+  complianceId    String   @unique
+  subjectId       String
+  standard        String
+  evidenceHash    String
+  evidenceUri     String?
+  description     String   @db.Text
+  chainId         Int
+  compliant       Boolean
+  findings        String[]
+  attestationUid  String?
+  paymentId       String?
+  auditedAt       DateTime?
+  createdAt       DateTime @default(now())
+
+  @@index([complianceId])
+  @@index([subjectId])
+}
+
+model ReputationRecord {
+  id                  String   @id @default(uuid())
+  reputationId        String   @unique
+  agentId             String
+  completedAgreements Int
+  totalDisputes       Int
+  disputeRate         Float
+  avgResolutionHours  Float
+  tier                String   // trusted, verified, new, disputed
+  attestationUid      String?
+  paymentId           String?
+  generatedAt         DateTime?
+  createdAt           DateTime @default(now())
+
+  @@index([reputationId])
+  @@index([agentId])
+}
+
+model OracleRecord {
+  id              String   @id @default(uuid())
+  oracleId        String   @unique
+  query           String   @db.Text
+  answer          String   @db.Text
+  sources         Json     @default("[]")
+  confidence      String   // high, medium, low
+  attestationUid  String?
+  paymentId       String?
+  generatedAt     DateTime?
+  createdAt       DateTime @default(now())
+
+  @@index([oracleId])
+}
+
+model MilestoneRecord {
+  id              String   @id @default(uuid())
+  milestoneId     String   @unique
+  description     String   @db.Text
+  deliverableHash String
+  specHash        String
+  deliverableUri  String?
+  assignee        String
+  reviewer        String
+  chainId         Int
+  verified        Boolean
+  findings        String[]
+  attestationUid  String?
+  paymentId       String?
+  verifiedAt      DateTime?
+  createdAt       DateTime @default(now())
+
+  @@index([milestoneId])
+  @@index([assignee])
+}
+
+model TranslationRecord {
+  id               String   @id @default(uuid())
+  translationId    String   @unique
+  sourceHash       String
+  translationHash  String
+  sourceLanguage   String
+  targetLanguage   String
+  sourceUri        String?
+  translationUri   String?
+  chainId          Int
+  accurate         Boolean
+  discrepancies    String[]
+  attestationUid   String?
+  paymentId        String?
+  attestedAt       DateTime?
+  createdAt        DateTime @default(now())
+
+  @@index([translationId])
+}

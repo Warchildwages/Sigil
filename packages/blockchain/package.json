@@ -1,0 +1,33 @@
+{
+  "name": "@sigil/blockchain",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./hash": "./src/hash.ts",
+    "./eas-schema": "./src/eas-schema.ts",
+    "./eas": "./src/eas.ts",
+    "./circle": "./src/circle.ts",
+    "./signing-methods": "./src/signing-methods.ts",
+    "./chains": "./src/chains.ts",
+    "./analyze": "./src/analyze.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@circle-fin/modular-wallets-core": "^1.0.13",
+    "@ethereum-attestation-service/eas-sdk": "^2.7.0",
+    "@sigil/shared": "workspace:*",
+    "ox": "^0.14.29",
+    "viem": "^2.17.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
+  }
+}
