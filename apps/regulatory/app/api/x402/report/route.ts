@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getStandards, estimateDeadlines } from '../../../lib/regulatory-engine';
+import { getStandards, estimateDeadlines } from '../../../../lib/regulatory-engine';
 
 export async function POST(req: NextRequest) {
   try {

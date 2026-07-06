@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { assessJurisdictionRisk } from '../../../lib/compliance-engine';
+import { assessJurisdictionRisk } from '../../../../lib/compliance-engine';
 
 export async function GET(req: Request) {
   const url = new URL(req.url);

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateProofChain, type ChainValidationRequest } from '../../../lib/validator-engine';
+import { validateProofChain, type ChainValidationRequest } from '../../../../lib/validator-engine';
 
 export async function POST(req: NextRequest) {
   try {

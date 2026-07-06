@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { discoverAgents } from '../../../lib/discovery';
-import { buildDidNostrDoc } from '../../../lib/did-nostr';
+import { discoverAgents } from '../../../../lib/discovery';
+import { buildDidNostrDoc } from '../../../../lib/did-nostr';
 
 export async function GET() {
   const agents = await discoverAgents();

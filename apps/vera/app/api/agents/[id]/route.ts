@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { getAgent, discoverAgents } from '../../../lib/discovery';
-import { verifyAgent } from '../../../lib/verification';
-import { evaluateAgent } from '../../../lib/evaluator';
-import { aggregateReputation, getWarnings } from '../../../lib/reputation';
-import type { AgentProfile } from '../../../lib/types';
+import { getAgent, discoverAgents } from '../../../../lib/discovery';
+import { verifyAgent } from '../../../../lib/verification';
+import { evaluateAgent } from '../../../../lib/evaluator';
+import { aggregateReputation, getWarnings } from '../../../../lib/reputation';
+import type { AgentProfile } from '../../../../lib/types';
 
 /**
  * GET /api/agents/:id — Get full profile for a specific agent
