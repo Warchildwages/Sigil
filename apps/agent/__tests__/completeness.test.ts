@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { verifyDocumentCompleteness } from '../src/app/api/analyze/completeness';
+import { verifyDocumentCompleteness } from '../app/api/analyze/completeness';
 
 describe('verifyDocumentCompleteness', () => {
   it('flags document with no signature block', () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { getFallbackAnalysis } from '../../src/app/api/analyze/fallback';
-import { verifyDocumentCompleteness } from '../../src/app/api/analyze/completeness';
+import { getFallbackAnalysis } from '../../app/api/analyze/fallback';
+import { verifyDocumentCompleteness } from '../../app/api/analyze/completeness';
 
 describe('getFallbackAnalysis', () => {
   it('returns a valid AnalyzeResult for any valid contentHash', () => {
