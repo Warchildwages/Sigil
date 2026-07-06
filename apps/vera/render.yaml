@@ -1,0 +1,16 @@
+# Sigil — Vera Companion App Render Blueprint
+services:
+  - type: web
+    name: sigil-vera
+    runtime: node
+    repo: https://github.com/Warchildwages/Sigil
+    rootDir: apps/vera
+    buildCommand: pnpm install && pnpm build
+    startCommand: node .next/standalone/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SIGIL_MOCK_MODE
+        value: true
+    plan: free

@@ -61,7 +61,7 @@ function auditCompliance(
 }
 
 export async function POST(request: Request) {
-  const paymentCheck = verifyPaymentHeader(request.headers, 'compliance', COMPLIANCE_PRICE);
+  const paymentCheck = await verifyPaymentHeader(request.headers, 'compliance', COMPLIANCE_PRICE);
   if (!paymentCheck.valid) {
     return paymentRequiredResponse('compliance', COMPLIANCE_PRICE, paymentCheck.reason);
   }

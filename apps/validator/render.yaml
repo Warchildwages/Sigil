@@ -1,0 +1,16 @@
+# Sigil — Validator App Render Blueprint
+services:
+  - type: web
+    name: sigil-validator
+    runtime: node
+    repo: https://github.com/Warchildwages/Sigil
+    rootDir: apps/validator
+    buildCommand: pnpm install && pnpm build
+    startCommand: node .next/standalone/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SIGIL_MOCK_MODE
+        value: true
+    plan: free

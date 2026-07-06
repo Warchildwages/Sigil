@@ -16,7 +16,7 @@ function generateId(): string {
 }
 
 export async function POST(request: Request) {
-  const paymentCheck = verifyPaymentHeader(request.headers, 'milestone', MILESTONE_PRICE);
+  const paymentCheck = await verifyPaymentHeader(request.headers, 'milestone', MILESTONE_PRICE);
   if (!paymentCheck.valid) {
     return paymentRequiredResponse('milestone', MILESTONE_PRICE, paymentCheck.reason);
   }
