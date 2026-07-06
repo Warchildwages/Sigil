@@ -1,0 +1,9 @@
+# Sigil — Lefthook Pre-Commit Configuration
+pre-commit:
+  parallel: true
+  commands:
+    typecheck:
+      run: npx tsc --noEmit
+      skip:
+        - merge
+        - rebase

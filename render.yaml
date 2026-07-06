@@ -1,0 +1,40 @@
+# Sigil — Render Blueprint
+# Render auto-detects this file and pre-configures the service.
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: sigil-agent
+    runtime: node
+    repo: https://github.com/Warchildwages/Sigil
+    branch: main
+    buildCommand: npm install -g pnpm && pnpm install && pnpm build
+    startCommand: cd apps/agent && node .next/standalone/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: NEXT_PUBLIC_PRODUCTION_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SIGNET_AGENT_WALLET_ADDRESS
+        sync: false
+      - key: SIGIL_CASPER_WALLET_ADDRESS
+        sync: false
+      - key: CSPR_CLOUD_API_KEY
+        sync: false
+      - key: LUNA_DID_NOSTR
+        sync: false
+      - key: VENICE_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ARC_TESTNET_RPC
+        sync: false
+      - key: AVALANCHE_FUJI_RPC_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+    healthCheckPath: /api/health
