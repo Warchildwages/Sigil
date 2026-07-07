@@ -1,58 +1,74 @@
-# Sigil 🦅
+# Sigil 🦅 — Legal Agent
 
-Your legal agent. Witness, escrow, dispute, compliance.
+**Casper Agentic Buildathon 2026 — Guest Agent**
 
-Powered by **Signet** — the universal platform for official acts.
+Your legal agent for the autonomous economy. Witness agreements, run compliance checks, timestamp documents, resolve disputes — all via x402 micropayments on Casper, attested on-chain via EAS.
+
+---
 
 ## Architecture
 
-Sigil is a **monorepo** with workspaces:
+Sigil is a **monorepo** with a swarm of micro-agents:
 
 ```
-sigil/
-├── apps/
-│   └── agent/          # Next.js + Sigil Agent
-├── packages/
-│   ├── shared/         # Types, schemas, errors, templates
-│   ├── blockchain/     # Chain utilities, identity, EAS, x402
-│   ├── db/             # Prisma schema + migrations
-│   └── sdk/            # Client SDK for Sigil API
-├── turbo.json          # Turborepo config
-└── package.json        # Root workspace config
+apps/
+├── agent/          # Main Sigil agent (Next.js, 11 operations)
+├── compliance/     # Compliance micro-agent (separately deployable)
+├── regulatory/     # Regulatory micro-agent
+├── validator/      # Validation micro-agent
+└── vera/           # Companion trust agent
+packages/
+├── shared/         # Types, schemas, errors, templates, pricing
+├── blockchain/     # Chain utilities, identity, EAS, x402
+├── db/             # Prisma schema + migrations
+└── sdk/            # Client SDK for Sigil API
 ```
 
-## Operations
+---
 
-| Operation | Endpoint | Description |
-|-----------|----------|-------------|
-| Witness | `/api/x402/witness` | Notarize/certify an event or document |
-| Escrow | `/api/x402/escrow` | Create/release escrow for legal agreements |
-| Dispute | `/api/x402/dispute` | File and manage dispute resolution |
-| Compliance | `/api/x402/compliance` | Regulatory compliance checks |
-| Milestone | `/api/x402/milestone` | Track and verify milestones |
-| Oracle | `/api/x402/oracle` | Provide verified data for contracts |
-| Reputation | `/api/x402/reputation` | Reputation scoring for legal actors |
-| Timestamp | `/api/x402/timestamp` | Proof of existence via on-chain timestamp |
-| Analyze | `/api/x402/analyze` | Document analysis and risk assessment |
-| Knowledge | `/api/x402/knowledge` | Legal knowledge base queries |
-| Translate | `/api/x402/translate` | Legal document translation |
+## Operations (11)
+
+| Operation | Endpoint | Price | Description |
+|-----------|----------|:-----:|-------------|
+| Analyze | `/api/x402/analyze` | $0.01 | Document analysis and risk assessment |
+| Knowledge | `/api/x402/knowledge` | $0.005 | Legal knowledge base queries |
+| Witness | `/api/x402/witness` | $0.02 | Notarize/certify an event or document |
+| Timestamp | `/api/x402/timestamp` | $0.005 | Proof of existence via on-chain timestamp |
+| Compliance | `/api/x402/compliance` | $0.05 | Regulatory compliance checks |
+| Reputation | `/api/x402/reputation` | $0.03 | Reputation scoring for legal actors |
+| Oracle | `/api/x402/oracle` | $0.05 | Provide verified data for contracts |
+| Milestone | `/api/x402/milestone` | $0.01 | Track and verify milestones |
+| Translate | `/api/x402/translate` | $0.03 | Legal document translation |
+| Escrow | `/api/x402/escrow` | $0.05 | Create/release escrow for legal agreements |
+| Dispute | `/api/x402/dispute` | $0.04 | File and manage dispute resolution |
+
+---
+
+## Ecosystem Integration
+
+Sigil integrates with the other agents in the Axium ecosystem:
+
+- **Vera 🛡️** — Trust authority. Vera verifies Sigil's identity and attests its reputation on-chain.
+- **Luna 🌙** — Event agent. Sigil witnesses Luna's event contracts and attests them on-chain.
+
+Together, they form a complete agent economy: events + legal + trust.
+
+---
 
 ## Quick Start
 
 ```bash
 pnpm install
 cp .env.example .env
-# fill in .env
 pnpm dev
 ```
 
 ## Identity Stack
 
-Sigil uses the same three-layer identity as Luna:
-- **Ed25519 (Casper)** — agent keypair
-- **EAS (EVM)** — on-chain attestations
-- **did:nostr** — cross-chain HTTP-based DID
+Sigil uses Ed25519 (Casper), EAS attestations (EVM), and did:nostr for cross-chain identity — the same three-layer stack as Luna.
 
-## License
+## Links
 
-MIT
+- GitHub: https://github.com/Warchildwages/Sigil
+- Vera (trust authority): https://github.com/Warchildwages/Vera
+- Luna (event agent): https://github.com/Warchildwages/Luna
