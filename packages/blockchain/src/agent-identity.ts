@@ -22,14 +22,14 @@ export const ERC8004_REGISTRY_ABI = [
   'function isAgent(bytes32 agentId) view returns (bool)',
 ] as const;
 
-/** Predeployed ERC-8004 registry addresses */
+/** Predeployed ERC-8004 registry addresses — deterministic across 30+ chains */
 export const ERC8004_REGISTRY_ADDRESSES: Record<number, string> = {
-  // Arc Testnet
-  5042002: '0x0000000000000000000000000000000000000800', // Placeholder — update with actual Arc deploy
-  // Base Sepolia
-  84532: '0x0000000000000000000000000000000000000800', // Placeholder — update with actual Base deploy
-  // Base Mainnet
-  8453: '0x0000000000000000000000000000000000000800', // Placeholder
+  // Arc Testnet (5042002)
+  5042002: '0x8004A818BFB912233c491871b3d84c89A494BD9e',
+  // Base Sepolia (84532)
+  84532: '0x8004A818BFB912233c491871b3d84c89A494BD9e',
+  // Base Mainnet (8453)
+  8453: '0x8004A169FB4a3325136EB29fA0ceB6D2e539a432',
 };
 
 /**
